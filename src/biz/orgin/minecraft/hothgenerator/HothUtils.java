@@ -186,21 +186,17 @@ public class HothUtils
 	
 	public static void setPos(ChunkGenerator.ChunkData chunk, int x, int y, int z, Material material)
 	{
-		int type = MaterialManager.toID(material);
-		HothUtils.setPos(chunk, x, y, z, (short)type);
+		int sub = y/16;
+		int rely = y-(sub*16);
+
+		HothUtils.setBlock(chunk, x, rely, z, material);
 	}
 	
 	public static void setPos(ChunkGenerator.ChunkData chunk, int x, int y, int z, int type)
 	{
-		int sub = y/16;
-		int rely = y-(sub*16);
+		Material material = MaterialManager.toMaterial(type);
 		
-		if(chunk[sub]==null)
-		{
-			chunk[sub] = new short[16*16*16];
-		}
-		
-		HothUtils.setBlock(chunk[sub], x,rely,z, (short)type);
+		HothUtils.setPos(chunk, x, y, z, material);
 
 	}
 	
