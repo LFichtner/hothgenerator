@@ -376,7 +376,7 @@ public class WorldGenerator extends ChunkGenerator
 		// Add structures and such
 		GardenGenerator.generateGarden(WorldGenerator.plugin, world, new Random(random.nextLong()), chunkx, chunkz);
 		RoomGenerator.generateRooms(world, WorldGenerator.plugin, new Random(random.nextLong()), chunkx, chunkz);
-		OreGenerator.generateOres(WorldGenerator.plugin, world, chunk, new Random(random.nextLong()) , chunkx, chunkz);
+		OreGenerator.generateOres(WorldGenerator.plugin, world, chunkData, new Random(random.nextLong()) , chunkx, chunkz);
 		DomeGenerator.generateDome(WorldGenerator.plugin, world, new Random(random.nextLong()), chunkx, chunkz);
 		BaseGenerator.generateBase(WorldGenerator.plugin, world, new Random(random.nextLong()), chunkx, chunkz);
 		SchematicsGenerator.generateSchematics(WorldGenerator.plugin, world, new Random(random.nextLong()), chunkx, chunkz);
