@@ -6,6 +6,7 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.ChunkGenerator;
 
 public class HothGenerator extends WorldGenerator
 {
@@ -15,9 +16,9 @@ public class HothGenerator extends WorldGenerator
 	}
 	
 	@Override
-	public short[][] generateExtBlockSections(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
+	public ChunkGenerator.ChunkData generateChunkData(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
-		return super.generateExtBlockSectionsHoth(world, random, chunkx, chunkz, biomes);
+		return super.generateChunkDataHoth(world, random, chunkx, chunkz, biomes);
 	}
 	
 	@Override
