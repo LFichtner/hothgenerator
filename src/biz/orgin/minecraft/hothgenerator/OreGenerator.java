@@ -11,6 +11,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.generator.ChunkGenerator;
 
 /**
  * A generator that replaces stone blocks into strands of ore blocks.
@@ -51,7 +52,7 @@ public class OreGenerator
 	private static int[] maxHeight = new int[] {60, 26, 128, 128, 26, 16, 16, 26, 128, 128, 64, 32};
 	private static int REPLACE = MaterialManager.toID(Material.STONE);
 	
-	public static void generateOres(HothGeneratorPlugin plugin, World world, short[][] chunk, Random random, int chunkx, int chunkz)
+	public static void generateOres(HothGeneratorPlugin plugin, World world, ChunkGenerator.ChunkData chunk, Random random, int chunkx, int chunkz)
 	{
 		if(ConfigManager.isGenerateOres(plugin, world))
 		{
@@ -84,8 +85,7 @@ public class OreGenerator
 	 * @param amount
 	 * @param type
 	 */
-	private static void vein(short[][] chunk, Random random, int originX,
-			int originY, int originZ, int amount, int type)
+	private static void vein(ChunkGenerator.ChunkData chunk, Random random, int originX, int originY, int originZ, int amount, int type)
 	{
 
 		int dx = originX;
@@ -124,7 +124,7 @@ public class OreGenerator
 				continue;
 			}
 
-			short oldtype = HothUtils.getPos(chunk, dx, dy, dz);
+			int oldtype = HothUtils.getPos(chunk, dx, dy, dz);
 			if(oldtype == REPLACE)
 			{
 				HothUtils.setPos(chunk, dx, dy, dz, type);

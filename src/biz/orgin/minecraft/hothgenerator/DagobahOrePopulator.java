@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.ChunkGenerator;
 
 public class DagobahOrePopulator extends BlockPopulator
 {
@@ -102,7 +103,7 @@ public class DagobahOrePopulator extends BlockPopulator
 		}
 	}
 	
-	public void populateWater(Random random, short[][] chunk, int surfaceOffset)
+	public void populateWater(Random random, ChunkGenerator.ChunkData chunk, int surfaceOffset)
 	{
 		for (int j = 0; j < 8; j++)
 		{
@@ -113,8 +114,7 @@ public class DagobahOrePopulator extends BlockPopulator
 	}
 
 	
-	private void waterVein(short[][] chunk, Random random, int originX,
-			int originY, int originZ, Material type)
+	private void waterVein(ChunkGenerator.ChunkData chunk, Random random, int originX, int originY, int originZ, Material type)
 	{
 		int amount = 16;
 		if(originY > 64)
@@ -159,7 +159,7 @@ public class DagobahOrePopulator extends BlockPopulator
 				continue;
 			}
 
-			short oldType = HothUtils.getPos(chunk, dx, dy, dz);
+			int oldType = HothUtils.getPos(chunk, dx, dy, dz);
 			if(oldType == DIRT_id || oldType == STONE_id || oldType == GRASS_id)
 			{
 				HothUtils.setPos(chunk, dx, dy, dz, type);
