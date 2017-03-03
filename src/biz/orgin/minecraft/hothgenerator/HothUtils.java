@@ -15,6 +15,8 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
+import org.bukkit.craftbukkit.v1_11_R1.block.CraftChest;
+import org.bukkit.craftbukkit.v1_11_R1.block.CraftCreatureSpawner;
 import org.bukkit.entity.EntityType;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.Inventory;
@@ -82,11 +84,15 @@ public class HothUtils
 					{
 						byte data = (byte)matrix[yy][zz][xx+width];
 						Block block = world.getBlockAt(x+xx, y-yy, z+zz);
-						
-						if(type==52) // Spawner, Set some spawner data
+
+						Class blockStateClass = block.getState().getClass();
+						Class spawnerClass = new CraftCreatureSpawner(block).getClass();
+						Class chestClass = new CraftChest(block).getClass();
+
+						if(type==52 && blockStateClass == spawnerClass) // Spawner, Set some spawner data
 						{
 							block.setType(Material.MOB_SPAWNER);
-							CreatureSpawner spawner = (CreatureSpawner)block.getState();
+							CreatureSpawner spawner = (CraftCreatureSpawner)block.getState();
 							if(data==0)
 							{
 								int creature = x%8;
@@ -116,7 +122,7 @@ public class HothUtils
 							
 							spawner.update(true, false);
 						}
-						else if(type==54) // Chest, set correct rotation and add some random loot
+						else if(type==54 && blockStateClass == chestClass) // Chest, set correct rotation and add some random loot
 						{
 							block.setType(Material.CHEST);
 							DataManager.setData(block, data, false);
