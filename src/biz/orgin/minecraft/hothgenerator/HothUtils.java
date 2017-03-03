@@ -202,7 +202,7 @@ public class HothUtils
 	
 	public static void setBlock(ChunkGenerator.ChunkData chunk, int x, int y, int z, Material material)
 	{
-		subchunk[((y) << 8) | (z << 4) | x] = blkid;
+		chunk.setBlock(x, y, z, material);
 	}
 
 	public static int getPos(ChunkGenerator.ChunkData chunk, int x, int y, int z)
@@ -267,7 +267,7 @@ public class HothUtils
 
 	public static int getBlock(ChunkGenerator.ChunkData chunk, int x, int y, int z)
 	{
-		return subchunk[((y) << 8) | (z << 4) | x];
+		return MaterialManager.toID(chunk.getType(x, y, z));
 	}
 
 	public static Schematic rotateSchematic(int direction, Schematic schematic)
