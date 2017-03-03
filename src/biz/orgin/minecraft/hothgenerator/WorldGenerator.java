@@ -94,12 +94,6 @@ public class WorldGenerator extends ChunkGenerator
 		
 		switch(worldType)
 		{
-		case TATOOINE:
-			return this.generateExtBlockSectionsTatooine(world, random, chunkx, chunkz, biomes);
-		case DAGOBAH:
-			return this.generateExtBlockSectionsDagobah(world, random, chunkx, chunkz, biomes);
-		case MUSTAFAR:
-			return this.generateExtBlockSectionsMustafar(world, random, chunkx, chunkz, biomes);
 		case HOTH:
 		default: // Default to hoth chunks
 			return this.generateExtBlockSectionsHoth(world, random, chunkx, chunkz, biomes);
