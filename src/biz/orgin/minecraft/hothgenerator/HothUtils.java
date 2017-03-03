@@ -210,12 +210,7 @@ public class HothUtils
 		int sub = y/16;
 		int rely = y-(sub*16);
 		
-		if(chunk[sub]==null)
-		{
-			chunk[sub] = new short[16*16*16];
-		}
-		
-		return HothUtils.getBlock(chunk[sub], x,rely,z);
+		return HothUtils.getBlock(chunk, x,rely,z);
 
 	}
 	
@@ -228,7 +223,7 @@ public class HothUtils
 				int y = HothUtils.getMaxY(chunk, x, z, maxy);
 				if(y>0)
 				{
-					short old = HothUtils.getPos(chunk, x, y, z);
+					int old = HothUtils.getPos(chunk, x, y, z);
 					if(old==from1 || old==from2)
 					{
 						HothUtils.setPos(chunk, x, y, z, to);
@@ -257,12 +252,7 @@ public class HothUtils
 		int sub = y/16;
 		int rely = y-(sub*16);
 		
-		if(chunk[sub]==null)
-		{
-			return -1;
-		}
-		
-		return HothUtils.getBlock(chunk[sub], x,rely,z);
+		return HothUtils.getBlock(chunk, x,rely,z);
 	}
 
 	public static int getBlock(ChunkGenerator.ChunkData chunk, int x, int y, int z)
