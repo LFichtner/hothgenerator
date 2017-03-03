@@ -16,7 +16,9 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 
 import biz.orgin.minecraft.hothgenerator.schematic.RotatedSchematic;
@@ -182,13 +184,13 @@ public class HothUtils
 		}
 	}
 	
-	public static void setPos(short[][] chunk, int x, int y, int z, Material material)
+	public static void setPos(ChunkGenerator.ChunkData chunk, int x, int y, int z, Material material)
 	{
 		int type = MaterialManager.toID(material);
 		HothUtils.setPos(chunk, x, y, z, (short)type);
 	}
 	
-	public static void setPos(short[][] chunk, int x, int y, int z, int type)
+	public static void setPos(ChunkGenerator.ChunkData chunk, int x, int y, int z, int type)
 	{
 		int sub = y/16;
 		int rely = y-(sub*16);
@@ -202,12 +204,12 @@ public class HothUtils
 
 	}
 	
-	public static void setBlock(short[] subchunk, int x, int y, int z, short blkid)
+	public static void setBlock(ChunkGenerator.ChunkData chunk, int x, int y, int z, Material material)
 	{
 		subchunk[((y) << 8) | (z << 4) | x] = blkid;
 	}
 
-	public static short getPos(short[][] chunk, int x, int y, int z)
+	public static int getPos(ChunkGenerator.ChunkData chunk, int x, int y, int z)
 	{
 		int sub = y/16;
 		int rely = y-(sub*16);
@@ -221,7 +223,7 @@ public class HothUtils
 
 	}
 	
-	public static void replaceTop(short[][] chunk, byte from1, byte from2, byte to, int maxy)
+	public static void replaceTop(ChunkGenerator.ChunkData chunk, int from1, int from2, byte to, int maxy)
 	{
 		for(int x=0;x<16;x++)
 		{
@@ -240,7 +242,7 @@ public class HothUtils
 		}
 	}
 	
-	private static int getMaxY(short[][] chunk, int x, int z, int maxy)
+	private static int getMaxY(ChunkGenerator.ChunkData chunk, int x, int z, int maxy)
 	{
 		for(int i=(maxy-1);i>0;i--)
 		{
@@ -254,7 +256,7 @@ public class HothUtils
 		return 0;
 	}
 	
-	private static int getRawPos(short[][] chunk, int x, int y, int z)
+	private static int getRawPos(ChunkGenerator.ChunkData chunk, int x, int y, int z)
 	{
 		int sub = y/16;
 		int rely = y-(sub*16);
@@ -267,7 +269,7 @@ public class HothUtils
 		return HothUtils.getBlock(chunk[sub], x,rely,z);
 	}
 
-	public static short getBlock(short[] subchunk, int x, int y, int z)
+	public static int getBlock(ChunkGenerator.ChunkData chunk, int x, int y, int z)
 	{
 		return subchunk[((y) << 8) | (z << 4) | x];
 	}
