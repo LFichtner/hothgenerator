@@ -18,7 +18,7 @@ public class DagobahGenerator extends WorldGenerator
 	@Override
 	public ChunkGenerator.ChunkData generateChunkData(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
-		return super.generateExtBlockSectionsDagobah(world, random, chunkx, chunkz, biomes);
+		return super.generateChunkDataDagobah(world, random, chunkx, chunkz, biomes);
 	}
 
 	@Override

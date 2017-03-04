@@ -95,11 +95,11 @@ public class WorldGenerator extends ChunkGenerator
 		switch(worldType)
 		{
 		case TATOOINE:
-			return this.generateExtBlockSectionsTatooine(world, random, chunkx, chunkz, biomes);
+			return this.generateChunkDataTatooine(world, random, chunkx, chunkz, biomes);
 		case DAGOBAH:
-			return this.generateExtBlockSectionsDagobah(world, random, chunkx, chunkz, biomes);
+			return this.generateChunkDataDagobah(world, random, chunkx, chunkz, biomes);
 		case MUSTAFAR:
-			return this.generateExtBlockSectionsMustafar(world, random, chunkx, chunkz, biomes);
+			return this.generateChunkDataMustafar(world, random, chunkx, chunkz, biomes);
 		case HOTH:
 		default: // Default to hoth chunks
 			return this.generateChunkDataHoth(world, random, chunkx, chunkz, biomes);
@@ -394,7 +394,7 @@ public class WorldGenerator extends ChunkGenerator
 	}
 
 
-	public short[][] generateExtBlockSectionsTatooine(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
+	public ChunkGenerator.ChunkData generateChunkDataTatooine(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
 		int mSTONE_id = MaterialManager.toID(Material.STONE);
 		int mSANDSTONE_id = MaterialManager.toID(Material.SANDSTONE);
@@ -720,7 +720,7 @@ public class WorldGenerator extends ChunkGenerator
 		return chunk;
 	}
 
-	public short[][] generateExtBlockSectionsDagobah(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
+	public ChunkGenerator.ChunkData generateChunkDataDagobah(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
 		DagobahOrePopulator orePopulator = new DagobahOrePopulator(WorldGenerator.plugin.getHeight());
 
@@ -1113,7 +1113,7 @@ public class WorldGenerator extends ChunkGenerator
 		return chunk;
 	}
 
-	public short[][] generateExtBlockSectionsMustafar(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
+	public ChunkGenerator.ChunkData generateChunkDataMustafar(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
 		boolean smoothlava = ConfigManager.isSmoothLava(WorldGenerator.plugin);
 
@@ -1319,7 +1319,7 @@ public class WorldGenerator extends ChunkGenerator
 		return chunk;
 	}
 
-	public short[][] generateExtBlockSectionsKashyyyk(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
+	public ChunkGenerator.ChunkData generateChunkDataKashyyyk(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes)
 	{
 		DagobahOrePopulator orePopulator = new DagobahOrePopulator(WorldGenerator.plugin.getHeight());
 
@@ -1425,7 +1425,7 @@ public class WorldGenerator extends ChunkGenerator
 		return chunk;
 	}
 
-	public short[][] generateExtBlockSectionsKamino(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes) {
+	public ChunkGenerator.ChunkData generateChunkDataKamino(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes) {
 		DagobahOrePopulator orePopulator = new DagobahOrePopulator(WorldGenerator.plugin.getHeight());
 
 		               /*
