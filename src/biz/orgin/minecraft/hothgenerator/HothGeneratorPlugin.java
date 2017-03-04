@@ -743,18 +743,8 @@ public class HothGeneratorPlugin extends JavaPlugin
 			WorldType worldType = WorldType.getType(id.toLowerCase());
 			switch(worldType)
 			{
-				case TATOOINE:
-					return new TatooineGenerator(worldName);
-				case DAGOBAH:
-					return new DagobahGenerator(worldName);
-				case MUSTAFAR:
-					return new MustafarGenerator(worldName);
 				case HOTH:
 					return new HothGenerator(worldName);
-				case KASHYYYK:
-					return new KashyyykGenerator(worldName);
-				case KAMINO:
-					return new KaminoGenerator(worldName);
 				default:
 					return new WorldGenerator(worldName); // Non hard coded world type
 			}
