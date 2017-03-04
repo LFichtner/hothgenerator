@@ -485,7 +485,7 @@ public class WorldGenerator extends ChunkGenerator
 				HothUtils.setPos(chunkData, x,y+5,z, getBedrockMaterial(localRand, (int)(256*0.2f))); // 20%
 
 				// STONE Layer, solid
-				for(y=6 ;y<27 + surfaceOffset ;y++)
+				for(y=6	;y<27 + surfaceOffset ;y++)
 				{
 					HothUtils.setPos(chunkData, x,y,z, Material.STONE);
 				}
@@ -572,7 +572,7 @@ public class WorldGenerator extends ChunkGenerator
 
 				int icey = surfaceOffset + 64+(int)(ice);
 				double dicey = surfaceOffset + 64+ice;
-				for(;y<(iceyiceh);y++)
+				for(;y<(icey-iceh);y++)
 				{
 					HothUtils.setPos(chunkData, x,y,z, Material.SANDSTONE);
 				}
@@ -592,7 +592,7 @@ public class WorldGenerator extends ChunkGenerator
 				}
 				else if (domountain>16)
 				{
-					mfactor = (domountain16)*0.5;
+					mfactor = (domountain-16)*0.5;
 				}
 
 				if(mfactor>0)
@@ -613,7 +613,7 @@ public class WorldGenerator extends ChunkGenerator
 				// Sand cover
 				double snowblocks = 1+this.noiseGenerator.noise(rx, rz, 8, 76)*2;
 
-				for(int i = 0;i<(int)(snowblocks + (dicey  (int)dicey)); i++)
+				for(int i = 0;i<(int)(snowblocks + (dicey - (int)dicey)); i++)
 				{
 					HothUtils.setPos(chunkData, x,y,z, Material.SAND);
 					y++;
@@ -627,7 +627,7 @@ public class WorldGenerator extends ChunkGenerator
 
 					if(i>(96+surfaceOffset))
 					{
-						a = a + 8  * (((i+surfaceOffset)32.0)/32.0); // fade out the higher we go
+						a = a + 8  * (((i+surfaceOffset)-32.0)/32.0); // fade out the higher we go
 					}
 					if(d>(a+10))
 					{
@@ -654,12 +654,12 @@ public class WorldGenerator extends ChunkGenerator
 				if(dolava>7)
 				{
 					double lava = this.noiseGenerator.noise(rx, rz, 4, 7)*21;
-					int lavay = (int)lava18;
-					if(lavay>2)
+					int lavay = (int)lava-18;
+					if(lavay>-2)
 					{
-						int start = 8(2+lavay)/2;
+						int start = 8-(2+lavay)/2;
 
-						for(int i=1;i<lavay;i++)
+						for(int i=-1;i<lavay;i++)
 						{
 							if(start+i>6)
 							{
@@ -679,12 +679,12 @@ public class WorldGenerator extends ChunkGenerator
 				if(dowater>7)
 				{
 					double water = this.noiseGenerator.noise(rx, rz, 4, 8)*21;
-					int watery = (int)water18;
-					if(watery>2)
+					int watery = (int)water-18;
+					if(watery>-2)
 					{
-						int start = 23(2+watery)/2;
+						int start = 23-(2+watery)/2;
 
-						for(int i=1;i<watery;i++)
+						for(int i=-1;i<watery;i++)
 						{
 							if(start+i>21)
 							{
@@ -818,7 +818,7 @@ public class WorldGenerator extends ChunkGenerator
 				HothUtils.setPos(chunkData, x,y+5,z, getBedrockMaterial(localRand, (int)(256*0.2f))); // 20%
 
 				// STONE Layer, solid
-				for(y=6 ;y<27 + surfaceOffset ;y++)
+				for(y=6	;y<27 + surfaceOffset ;y++)
 				{
 					HothUtils.setPos(chunkData, x,y,z, Material.STONE);
 				}
@@ -905,7 +905,7 @@ public class WorldGenerator extends ChunkGenerator
 
 				int icey = surfaceOffset + 64+(int)(ice);
 				double dicey = surfaceOffset + 64+ice;
-				for(;y<(iceyiceh);y++)
+				for(;y<(icey-iceh);y++)
 				{
 					HothUtils.setPos(chunkData, x,y,z, Material.DIRT);
 				}
@@ -922,7 +922,7 @@ public class WorldGenerator extends ChunkGenerator
 
 				if(domountain>10.0)
 				{
-					mfactor = (domountain10.0)/10.0;
+					mfactor = (domountain-10.0)/10.0;
 				}
 
 				if(mfactor>0)
@@ -943,9 +943,9 @@ public class WorldGenerator extends ChunkGenerator
 				// Dirt/Grass cover
 				double snowblocks = 1+this.noiseGenerator.noise(rx, rz, 8, 76)*2;
 
-				for(int i = 0;i<(int)(snowblocks + (dicey  (int)dicey)); i++)
+				for(int i = 0;i<(int)(snowblocks + (dicey - (int)dicey)); i++)
 				{
-					if(i==(int)(snowblocks + (dicey  (int)dicey))1)
+					if(i==(int)(snowblocks + (dicey - (int)dicey))-1)
 					{
 						if(biome.equals(Biome.MUSHROOM_ISLAND) || biome.equals(Biome.MUSHROOM_ISLAND_SHORE))
 						{
@@ -956,7 +956,7 @@ public class WorldGenerator extends ChunkGenerator
 							HothUtils.setPos(chunkData, x,y,z, Material.GRASS);
 						}
 					}
-		                                       else
+					else
 					{
 						HothUtils.setPos(chunkData, x,y,z, Material.DIRT);
 					}
@@ -974,7 +974,7 @@ public class WorldGenerator extends ChunkGenerator
 
 					if(i>(96+surfaceOffset))
 					{
-						a = a + 8  * (((i+surfaceOffset)32.0)/32.0); // fade out the higher we go
+						a = a + 8  * (((i+surfaceOffset)-32.0)/32.0); // fade out the higher we go
 					}
 					if(d>(a+8))
 					{
@@ -1003,27 +1003,27 @@ public class WorldGenerator extends ChunkGenerator
 					for(int i=1;i<sedimentD+1;i++)
 						if(sediment>90)
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.SAND);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.SAND);
 						}
 						else if(sediment>80)
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.CLAY);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.CLAY);
 						}
 						else if(sediment>70)
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.GRAVEL);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.GRAVEL);
 						}
 						else if(sediment>60)
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.HARD_CLAY);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.HARD_CLAY);
 						}
 						else if(sediment<10)
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.STONE);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.STONE);
 						}
 						else
 						{
-							HothUtils.setPos(chunkData, x,yi,z, Material.DIRT);
+							HothUtils.setPos(chunkData, x,y-i,z, Material.DIRT);
 						}
 				}
 
@@ -1032,12 +1032,12 @@ public class WorldGenerator extends ChunkGenerator
 				if(dolava>7)
 				{
 					double lava = this.noiseGenerator.noise(rx, rz, 4, 7)*21;
-					int lavay = (int)lava18;
-					if(lavay>2)
+					int lavay = (int)lava-18;
+					if(lavay>-2)
 					{
-						int start = 8(2+lavay)/2;
+						int start = 8-(2+lavay)/2;
 
-						for(int i=1;i<lavay;i++)
+						for(int i=-1;i<lavay;i++)
 						{
 							if(start+i>6)
 							{
@@ -1057,12 +1057,12 @@ public class WorldGenerator extends ChunkGenerator
 				if(dowater>7)
 				{
 					double water = this.noiseGenerator.noise(rx, rz, 4, 8)*21;
-					int watery = (int)water18;
-					if(watery>2)
+					int watery = (int)water-18;
+					if(watery>-2)
 					{
-						int start = 23(2+watery)/2;
+						int start = 23-(2+watery)/2;
 
-						for(int i=1;i<watery;i++)
+						for(int i=-1;i<watery;i++)
 						{
 							if(start+i>21)
 							{
@@ -1084,7 +1084,7 @@ public class WorldGenerator extends ChunkGenerator
 				{
 					doLily = true;
 					HothUtils.setPos(chunkData, x,wy,z, Material.STATIONARY_WATER);
-					wy;
+					wy--;
 				}
 
 				if(doLily)
@@ -1147,7 +1147,7 @@ public class WorldGenerator extends ChunkGenerator
 				double dLavaLevel = LavaLevelGenerator.getLavaLevelAt(noiseGenerator, rx, rz, surfaceOffset);
 				int lavaLevel = (int)dLavaLevel;
 
-				lavacover[z][x] = new Position(rx, lavaLevel, rz, (int) (8.0*((1  (dLavaLevel  lavaLevel)))));
+				lavacover[z][x] = new Position(rx, lavaLevel, rz, (int) (8.0*((1 - (dLavaLevel - lavaLevel)))));
 
 				// BEDROCK Layer
 				int y = 0;
@@ -1169,7 +1169,7 @@ public class WorldGenerator extends ChunkGenerator
 				{
 					// DIRT Layer
 					double h = this.noiseGenerator.noise(rx, rz, 8, 11)*6;
-					if(y10>h)
+					if(y-10>h)
 					{
 						HothUtils.setPos(chunkData,  x, y, z,  Material.STONE);
 					}
@@ -1180,7 +1180,7 @@ public class WorldGenerator extends ChunkGenerator
 				}
 
 				// Bulk layer
-				for(y=16;y<64+surfaceOffset20;y++)
+				for(y=16;y<64+surfaceOffset-20;y++)
 				{
 					HothUtils.setPos(chunkData,  x, y, z,  Material.STONE);
 				}
@@ -1190,7 +1190,7 @@ public class WorldGenerator extends ChunkGenerator
 				double ml2 = this.noiseGenerator.noise(rx, rz, 2, 33)*8;
 				double ml3 = this.noiseGenerator.noise(rx, rz, 2, 22)*12;
 				double ml4 = this.noiseGenerator.noise(rx, rz, 2, 7)*16 * this.noiseGenerator.noise(rx, rz, 2, 125);
-				//  add some noise
+				// - add some noise
 				double fn1 = this.noiseGenerator.noise(rx, rz, 2, 235);
 				double fn2 = fn1 * this.noiseGenerator.noise(rx, rz, 2, 3) * 4;
 
@@ -1206,7 +1206,7 @@ public class WorldGenerator extends ChunkGenerator
 
 				if(domountain>10.0)
 				{
-					mfactor = (domountain10.0)/10.0;
+					mfactor = (domountain-10.0)/10.0;
 				}
 
 				if(mfactor>0)
@@ -1226,16 +1226,16 @@ public class WorldGenerator extends ChunkGenerator
 				}
 
 				// River layer
-				double r1 = this.noiseGenerator.noise(rx, rz, 2, 350)*(32+64)16;
-				double r2 = this.noiseGenerator.noise(rx, rz, 2, 830)*(32+64)16;
+				double r1 = this.noiseGenerator.noise(rx, rz, 2, 350)*(32+64)-16;
+				double r2 = this.noiseGenerator.noise(rx, rz, 2, 830)*(32+64)-16;
 
 				double r = r1+r2;
 
-				if(r>60 && r<76)  // 66  70 = lavariver
+				if(r>60 && r<76)  // 66 - 70 = lavariver
 				{
-					//double height = (3Math.abs(68r))*3;
-					double height = (3Math.abs(68r)*Math.abs(68r))/1.5;
-					int rivy = lavaLevel  (int)height;
+					//double height = (3-Math.abs(68-r))*3;
+					double height = (3-Math.abs(68-r)*Math.abs(68-r))/1.5;
+					int rivy = lavaLevel - (int)height;
 					while(HothUtils.getPos(chunkData, x, rivy, z)!=mAIR_id)
 					{
 						HothUtils.setPos(chunkData,  x, rivy, z,  Material.AIR);
@@ -1251,7 +1251,7 @@ public class WorldGenerator extends ChunkGenerator
 				{
 					added = true;
 					HothUtils.setPos(chunkData, x,wy,z, Material.LAVA);
-					wy;
+					wy--;
 				}
 				// If we have smooth lava then we need an extra layer of lava or else the top layer may vanish
 				if(smoothlava && added && wy>0)
@@ -1268,7 +1268,7 @@ public class WorldGenerator extends ChunkGenerator
 
 					if(i>(96+surfaceOffset+16))
 					{
-						a = a + 8  * (((i+surfaceOffset)32.0)/32.0); // fade out the higher we go
+						a = a + 8  * (((i+surfaceOffset)-32.0)/32.0); // fade out the higher we go
 					}
 					if(d>(a+8))
 					{
@@ -1290,7 +1290,7 @@ public class WorldGenerator extends ChunkGenerator
 
 					if(i>(96+surfaceOffset+16))
 					{
-						a = a + 8  * (((i+surfaceOffset)32.0)/32.0); // fade out the higher we go
+						a = a + 8  * (((i+surfaceOffset)-32.0)/32.0); // fade out the higher we go
 					}
 					if(d>(a+8))
 					{
@@ -1427,6 +1427,15 @@ public class WorldGenerator extends ChunkGenerator
 
 	public ChunkGenerator.ChunkData generateChunkDataKamino(World world, Random random, int chunkx, int chunkz, BiomeGrid biomes) {
 		DagobahOrePopulator orePopulator = new DagobahOrePopulator(WorldGenerator.plugin.getHeight());
+		
+		/*
+		int mSTONE_id = MaterialManager.toID(Material.STONE);
+		int mDIRT_id = MaterialManager.toID(Material.DIRT);
+		int mGRASS_id = MaterialManager.toID(Material.GRASS);
+		int mAIR_id = MaterialManager.toID(Material.AIR);
+		Material mAIR = Material.AIR;
+		Material mLAVA = Material.LAVA;
+		*/
 
 		               /*
                int mSTONE_id = MaterialManager.toID(Material.STONE);
@@ -1448,10 +1457,12 @@ public class WorldGenerator extends ChunkGenerator
 		int vsegs = WorldGenerator.plugin.getHeight() / 16;
 		ChunkData chunkData = createChunkData(world);
 
-		for (int z = 0; z < 16; z++) {
-			for (int x = 0; x < 16; x++) {
-				int rx = chunkx * 16 + x;
-				int rz = chunkz * 16 + z;
+		for(int z=0;z<16;z++)
+		{
+			for(int x=0;x<16;x++)
+			{
+				int rx = chunkx*16 + x;
+				int rz = chunkz*16 + z;
 
 				Biome biome = biomes.getBiome(x, z);
 				float factor = 1.0f;
@@ -1486,12 +1497,12 @@ public class WorldGenerator extends ChunkGenerator
 				}
 				// BEDROCK Layer
 				int y = 0;
-				HothUtils.setPos(chunkData, x, y, z, Material.BEDROCK);
-				HothUtils.setPos(chunkData, x, y + 1, z, getBedrockMaterial(localRand, (int) (256 * 0.9f))); // 90%
-				HothUtils.setPos(chunkData, x, y + 2, z, getBedrockMaterial(localRand, (int) (256 * 0.7f))); // 70%
-				HothUtils.setPos(chunkData, x, y + 3, z, getBedrockMaterial(localRand, (int) (256 * 0.5f))); // 50%
-				HothUtils.setPos(chunkData, x, y + 4, z, getBedrockMaterial(localRand, (int) (256 * 0.3f))); // 30%
-				HothUtils.setPos(chunkData, x, y + 5, z, getBedrockMaterial(localRand, (int) (256 * 0.2f))); // 20%
+				HothUtils.setPos(chunkData, x,y,z,Material.BEDROCK);
+				HothUtils.setPos(chunkData, x,y+1,z, getBedrockMaterial(localRand, (int)(256*0.9f))); // 90%
+				HothUtils.setPos(chunkData, x,y+2,z, getBedrockMaterial(localRand, (int)(256*0.7f))); // 70%
+				HothUtils.setPos(chunkData, x,y+3,z, getBedrockMaterial(localRand, (int)(256*0.5f))); // 50%
+				HothUtils.setPos(chunkData, x,y+4,z, getBedrockMaterial(localRand, (int)(256*0.3f))); // 30%
+				HothUtils.setPos(chunkData, x,y+5,z, getBedrockMaterial(localRand, (int)(256*0.2f))); // 20%
 			}
 		}
 
