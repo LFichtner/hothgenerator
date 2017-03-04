@@ -179,22 +179,22 @@ public class FireBeetle
 		{
 		case PRIME:
 			m.setCustomName(FireBeetleType.PRIME.getName());
-			m.setMaxHealth(20.0);
+//			m.setMaxHealth(20.0);
 			m.setHealth(20.0);
 			break;
 		case REGULAR:
 			m.setCustomName(FireBeetleType.REGULAR.getName());
-			m.setMaxHealth(16.0);
+//			m.setMaxHealth(16.0);
 			m.setHealth(16);
 			break;
 		case HATCHLING:
 			m.setCustomName(FireBeetleType.HATCHLING.getName());
-			m.setMaxHealth(8.0);
+//			m.setMaxHealth(8.0);
 			m.setHealth(8);
 			break;
 		}
 
-		m.setMaxHealth(20.0);
+//		m.setMaxHealth(20.0);
 		m.setHealth(20.0);
 		m.setCustomNameVisible(true);
 		
